@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>EdgePad · краї трекпада стають повзунками</title>
-<meta name="description" content="EdgePad для macOS: яскравість, гучність і перемотка з країв трекпада, а треки з його верхніх кутів.">
+<meta name="description" content="EdgePad для macOS: яскравість, гучність і перемотка з країв трекпада, а треки з його верхніх кутів. 7 днів безкоштовно.">
 <meta name="theme-color" content="#0A0A12">
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -765,6 +765,53 @@ h1 .w {
   .dl-link span { display: none; }
 }
 
+/* ---------- buy ---------- */
+.price-card {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 48px);
+  align-items: center;
+  max-width: 940px;
+  padding: clamp(24px, 5vw, 46px);
+  border-radius: 30px;
+  background: var(--bg-raise);
+  box-shadow: inset 0 0 0 1px var(--line-strong), 0 40px 110px -55px rgba(240, 80, 154, 0.6);
+}
+.price-card > div { min-width: 0; }
+.price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+.price b {
+  font: 700 clamp(2.6rem, 7vw, 3.7rem)/1 var(--font-display);
+  letter-spacing: -0.03em;
+  background: var(--g-all);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.price span { color: var(--fg-dim); font-size: 1.02rem; }
+.price-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+.price-list li { position: relative; padding-left: 34px; line-height: 1.45; }
+.price-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--g-all);
+  color: #fff;
+  font: 700 0.78rem/1 var(--font-body);
+}
+.price-cta { display: grid; gap: 12px; }
+.price-cta .btn { width: 100%; }
+.btn.is-soon { opacity: 0.75; }
+.price-note { margin: 6px 0 0; color: var(--fg-faint); font-size: 0.86rem; line-height: 1.5; }
+.price-note a { color: var(--fg-dim); }
+@media (max-width: 760px) { .price-card { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- install ---------- */
 .install-list { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; counter-reset: step; }
 .install-list li {
@@ -838,6 +885,9 @@ kbd {
 .foot .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; padding-block: 34px calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--fg-faint); font-size: 0.86rem; }
 .foot .brand { color: var(--fg); }
 .foot p { margin: 0; flex: 1 1 320px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.foot-links a { color: var(--fg-dim); text-decoration: none; }
+.foot-links a:hover { color: var(--fg); }
 
 /* ---------- toast ---------- */
 .toast {
@@ -878,6 +928,7 @@ kbd {
       <a href="#demo">Демо</a>
       <a href="#features">Можливості</a>
       <a href="#app">Застосунок</a>
+      <a href="#buy">Ціна</a>
       <a href="#install">Встановлення</a>
       <a href="#faq">Питання</a>
     </nav>
@@ -903,12 +954,12 @@ kbd {
         <div class="cta-row">
           <a class="btn btn-primary js-download" href="EdgePad.dmg" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
-            Завантажити для Mac
+            Спробувати безкоштовно
             <span class="tag"><span data-size>2,3 МБ</span></span>
           </a>
-          <a class="btn btn-ghost" href="#install">Як встановити</a>
+          <a class="btn btn-ghost" href="#buy"><span>Купити · <span data-price>$2</span></span></a>
         </div>
-        <p class="meta"><span>macOS 13 і новіші</span><span>Apple Silicon та Intel</span><span>Українською</span></p>
+        <p class="meta"><span>7 днів безкоштовно</span><span>macOS 13 і новіші</span><span>Apple Silicon та Intel</span><span>Українською</span></p>
       </div>
 
       <div class="device" id="demo">
@@ -1056,17 +1107,43 @@ kbd {
     </div>
   </section>
 
+  <section class="section" id="buy" aria-labelledby="buy-title" style="padding-bottom: 0">
+    <div class="wrap">
+      <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>Ціна</span>
+      <h2 id="buy-title">Купіть один раз і користуйтеся завжди</h2>
+      <div class="price-card">
+        <div>
+          <div class="price"><b data-price>$2</b><span>один раз, без підписки</span></div>
+          <ul class="price-list">
+            <li>Усе, що вміє EdgePad: краї, кути, перемотка, звук і тактильний відгук</li>
+            <li>Один ключ на три ваші Mac</li>
+            <li>Безкоштовні оновлення версії 1.x</li>
+            <li>14 днів на повернення коштів без пояснень</li>
+          </ul>
+        </div>
+        <div class="price-cta">
+          <a class="btn btn-primary" id="buyButton" href="#buy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/></svg>
+            <span id="buyLabel">Купити EdgePad</span>
+          </a>
+          <a class="btn btn-ghost" href="#download">Спершу спробувати 7 днів</a>
+          <p class="price-note">Оплату приймає <a href="https://www.creem.io" rel="noopener">Creem</a>: він одразу надсилає чек і ключ на вашу пошту. Ключ вводиться в EdgePad на вкладці «Ліцензія».<br><a href="terms.html">Умови</a> · <a href="refund.html">Повернення коштів</a> · <a href="privacy.html">Конфіденційність</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section download" id="download" aria-labelledby="download-title">
     <div class="wrap">
       <div class="dl-card">
         <img class="dl-icon" src="assets/icon-256.png" width="168" height="168" alt="Іконка EdgePad">
         <div>
           <h2 id="download-title">Завантажити EdgePad</h2>
-          <p class="dl-meta">Версія <span data-version>1.1</span> · <span data-size>2,3 МБ</span> · macOS 13 і новіші · Apple Silicon та Intel</p>
+          <p class="dl-meta">Версія <span data-version>1.1</span> · <span data-size>2,3 МБ</span> · 7 днів безкоштовно · macOS 13 і новіші · Apple Silicon та Intel</p>
           <div class="cta-row">
             <a class="btn btn-primary js-download" href="EdgePad.dmg" download>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
-              Завантажити для Mac
+              Завантажити безкоштовно
             </a>
             <button class="btn btn-ghost" id="share" type="button">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
@@ -1102,6 +1179,22 @@ kbd {
       <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>Питання</span>
       <h2 id="faq-title">Часті питання</h2>
       <div class="faq-list">
+        <details>
+          <summary>Скільки коштує EdgePad?</summary>
+          <p>Перші 7 днів безкоштовно, з усіма можливостями. Далі <span data-price>$2</span> один раз, без підписки. Один ключ працює на трьох ваших Mac, а оновлення версії 1.x безкоштовні.</p>
+        </details>
+        <details>
+          <summary>Як активувати ключ?</summary>
+          <p>Ключ приходить на пошту одразу після оплати. Відкрийте налаштування EdgePad, перейдіть на вкладку «Ліцензія», вставте ключ і натисніть «Активувати». Щоб перенести ключ на інший Mac, натисніть там же «Звільнити ключ».</p>
+        </details>
+        <details>
+          <summary>Що буде, коли закінчиться пробний період?</summary>
+          <p>Краї й кути трекпада перестануть керувати Mac, поки ви не введете ключ. Налаштування нікуди не зникнуть, а трекпад працюватиме як звичайно.</p>
+        </details>
+        <details>
+          <summary>Чи можна повернути гроші?</summary>
+          <p>Так, протягом 14 днів після покупки й без пояснень. Напишіть нам або відповідайте на лист із чеком. Детальніше в <a href="refund.html">політиці повернення</a>.</p>
+        </details>
         <details>
           <summary>Чому macOS попереджає під час першого запуску?</summary>
           <p>EdgePad ще не має підпису й нотаризації Apple, тому macOS не відкриває його одразу. Дозволити запуск треба один раз у «Системних параметрах» → «Приватність і безпека». Далі програма відкривається як звичайно.</p>
@@ -1142,6 +1235,13 @@ kbd {
 <footer class="foot">
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/icon-256.png" alt="" width="34" height="34">EdgePad</a>
+    <nav class="foot-links" aria-label="Документи">
+      <a href="terms.html">Умови</a>
+      <a href="refund.html">Повернення коштів</a>
+      <a href="privacy.html">Конфіденційність</a>
+      <a href="https://www.instagram.com/_.alewex/" rel="noopener">Instagram</a>
+      <a href="mailto:oleksijzaleckij512@gmail.com">Пошта</a>
+    </nav>
     <p>© <span id="year">2026</span> EdgePad. Mac, MacBook і macOS є торговельними марками Apple Inc.</p>
   </div>
 </footer>
@@ -1157,6 +1257,12 @@ kbd {
     version: '1.1',
     size: '2,3 МБ',
     file: 'EdgePad.dmg',
+  };
+  // Продаж. checkout — посилання на оплату з Creem (Products → EdgePad → Share).
+  // Поки воно порожнє, кнопка «Купити» лише каже, що продаж скоро відкриється.
+  const STORE = {
+    price: '$2',
+    checkout: '',
   };
   // ------------------------------------------------------------------
 
@@ -1175,6 +1281,18 @@ kbd {
   document.querySelectorAll('[data-version]').forEach((el) => { el.textContent = RELEASE.version; });
   document.querySelectorAll('[data-size]').forEach((el) => { el.textContent = RELEASE.size; });
   document.querySelectorAll('.js-download').forEach((a) => { a.href = RELEASE.file; });
+  document.querySelectorAll('[data-price]').forEach((el) => { el.textContent = STORE.price; });
+  const buyButton = $('buyButton');
+  if (STORE.checkout) {
+    buyButton.href = STORE.checkout;
+  } else {
+    $('buyLabel').textContent = 'Продаж відкривається найближчим часом';
+    buyButton.classList.add('is-soon');
+    buyButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      showToast('Продаж скоро відкриється. Поки що спробуйте EdgePad безкоштовно.');
+    });
+  }
   $('fileLink').textContent = fileURL;
   $('year').textContent = new Date().getFullYear();
 
