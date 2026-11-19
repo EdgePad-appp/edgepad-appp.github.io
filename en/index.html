@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EdgePad · Your trackpad edges become sliders</title>
+<meta name="description" content="EdgePad for macOS: brightness, volume and scrubbing from the edges of your trackpad, and tracks from its top corners. Free for 7 days.">
+<meta name="theme-color" content="#0A0A12">
+<link rel="canonical" href="https://edgepad.app/en/">
+<link rel="alternate" hreflang="uk" href="https://edgepad.app/">
+<link rel="alternate" hreflang="en" href="https://edgepad.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://edgepad.app/en/">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="uk_UA">
+<meta property="og:title" content="EdgePad">
+<meta property="og:description" content="Brightness, volume, scrubbing and tracks from the edges of your trackpad. A utility for macOS.">
+<meta property="og:image" content="https://edgepad.app/assets/og-en.jpg">
+<meta property="og:url" content="https://edgepad.app/en/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="EdgePad, back to top">
+      <img src="/assets/icon-256.png" alt="" width="34" height="34">
+      EdgePad
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#demo">Demo</a>
+      <a href="#features">Features</a>
+      <a href="#app">App</a>
+      <a href="#buy">Pricing</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Site language">
+      <a href="/" lang="uk" hreflang="uk" title="Українська">UA</a>
+      <a href="/en/" lang="en" hreflang="en" aria-current="page" title="English">EN</a>
+    </div>
+    <a class="btn btn-primary btn-small" href="#download">Download</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="aurora"></div>
+    <div class="grain"></div>
+    <div class="wrap">
+      <div>
+        <span class="chip"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>Utility for macOS · <b>version <span data-version>1.2.1</span></b></span>
+        <h1 id="hero-title">
+          <span class="w w-bright">Brightness.</span>
+          <span class="w w-vol">Volume.</span>
+          <span class="w w-seek">Scrubbing.</span>
+          <span class="w w-media">Tracks.</span>
+        </h1>
+        <p class="hero-lead">One finger along the edge of your trackpad.</p>
+        <p class="hero-text">EdgePad turns the edges of your trackpad into sliders and its top corners into track buttons. The left strip controls brightness, the right one volume, and the bottom one scrubs through music and video. Taps, clicks and multi-finger gestures work just as before.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary js-download" href="/EdgePad.dmg" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+            Try it free
+            <span class="tag"><span data-size>2.5 MB</span></span>
+          </a>
+          <a class="btn btn-ghost" href="#buy"><span>Buy · <span data-price>$2</span></span></a>
+        </div>
+        <p class="meta"><span>Free for 7 days</span><span>macOS 13 or later</span><span>Apple Silicon and Intel</span><span>Interface in Ukrainian</span></p>
+      </div>
+
+      <div class="device" id="demo">
+        <div class="screen" aria-hidden="true">
+          <div class="screen-inner">
+            <div class="clip" id="clip">
+              <div class="sun"></div>
+              <div class="ridge a"></div>
+              <div class="ridge b"></div>
+              <div class="now"><b id="nowTitle">Sunset</b><span>Demo album</span></div>
+              <div class="eq" id="eq"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="player">
+              <svg viewBox="0 0 12 12"><path d="M2 1.2v9.6L10.4 6z" fill="currentColor"/></svg>
+              <span id="tNow">1:24</span>
+              <span class="track"><b id="prog"></b></span>
+              <span id="tDur">4:05</span>
+            </div>
+            <div class="dimmer" id="dimmer"></div>
+            <svg class="cursor" id="cursor" viewBox="0 0 16 22"><path d="M1.5 1.5v16.2l4.1-3.9 2.7 6.3 2.9-1.2-2.7-6.2 5.7-.2z" fill="#fff" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/></svg>
+            <div class="hud" id="hud" data-layout="compact" data-kind="vol">
+              <div class="hud-compact">
+                <span class="hud-badge" id="hudBadge"></span>
+                <div class="hud-main">
+                  <div class="hud-row"><b id="hudTitle">Volume</b><span id="hudValue">45%</span></div>
+                  <div class="hud-seg" id="hudSeg"></div>
+                </div>
+              </div>
+              <div class="hud-seek">
+                <div class="hud-head">
+                  <span class="hud-art"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 17.5V6.2l10-2.2v11.3a2.8 2.8 0 1 1-2-2.7V7.8l-6 1.3v8.4a2.8 2.8 0 1 1-2-2.7z"/></svg></span>
+                  <div class="hud-meta"><b id="seekTitle">Sunset</b><span>Demo album · Music</span></div>
+                  <span class="hud-delta" id="seekDelta"></span>
+                </div>
+                <div class="hud-line">
+                  <span id="seekNow">1:24</span>
+                  <span class="hud-time"><b id="seekFill"></b><i id="seekStart"></i><em id="seekKnob"></em></span>
+                  <span id="seekDur">4:05</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pad" id="pad" role="img" aria-label="Trackpad demo: press and drag along a colored strip, or double-click a corner">
+          <div class="zone left"><span>Brightness ↕</span></div>
+          <div class="zone right"><span>Volume ↕</span></div>
+          <div class="zone bottom"><span>Scrub ↔</span></div>
+          <div class="corner left" id="cornerLeft"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2.4v14H6zM20 5v14L9.5 12z"/></svg></div>
+          <div class="corner right" id="cornerRight"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.6 5H18v14h-2.4zM4 5l10.5 7L4 19z"/></svg></div>
+          <p class="pad-hint">Drag along a colored strip or double-click a corner</p>
+          <div class="finger" id="finger"></div>
+        </div>
+
+        <div class="controls">
+          <label for="zw">Zone width</label>
+          <input id="zw" type="range" min="3" max="40" value="10">
+          <output id="zwOut" for="zw">10% · 12 mm</output>
+          <button class="sound" id="sound" type="button" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+            Sound
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" aria-label="How it works">
+    <div class="wrap">
+      <ol class="steps">
+        <li><span class="n">1</span><div><b>Touch a zone</b><p>Rest a finger on the colored strip next to an edge of the trackpad.</p></div></li>
+        <li><span class="n">2</span><div><b>Slide along the edge</b><p>Up or down on the sides, left or right along the bottom. Every step makes a soft click.</p></div></li>
+        <li><span class="n">3</span><div><b>Let go</b><p>The pointer stays exactly where it was before the gesture.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>Features</span>
+      <h2 id="features-title">It kicks in only when you want it to</h2>
+      <p class="section-lead">A gesture starts only when one finger touches the strip next to an edge and moves along it, or when you double-tap a top corner. Everything else works the way your trackpad always does.</p>
+
+      <div class="features">
+        <article class="feature c-seek">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6v12l8.5-6zM12.5 6v12L21 12z"/></svg></span>
+          <h3>Scrub music and video<span class="new">new</span></h3>
+          <p>Spotify, Music, QuickTime and VLC are scrubbed directly, even in the background, with the exact time on the timeline. Video in the browser is scrubbed with the <kbd>←</kbd> <kbd>→</kbd> keys.</p>
+        </article>
+        <article class="feature c-media">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.6 5H18v14h-2.4zM4 5l10.5 7L4 19z"/></svg></span>
+          <h3>Tracks from the top corners<span class="new">new</span></h3>
+          <p>Double-tap the left corner for the previous track and the right one for the next. You can change what each corner does.</p>
+        </article>
+        <article class="feature c-vol">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 8v8M19 10v4M21 12h0"/></svg></span>
+          <h3>Scroll sound<span class="new">new</span></h3>
+          <p>A soft click on every step. The higher the level, the higher the pitch. The click volume is adjustable.</p>
+        </article>
+        <article class="feature c-bright">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4v16M20 4v16M8 12h8M10.5 9.5 8 12l2.5 2.5M13.5 9.5 16 12l-2.5 2.5"/></svg></span>
+          <h3>Zones that fit your hand</h3>
+          <p>Each edge can be <span class="unit">3</span> to <span class="unit">40%</span> wide and each corner <span class="unit">8</span> to <span class="unit">30 mm</span>. The settings show how big that is on your trackpad.</p>
+        </article>
+        <article class="feature c-vol">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l13 7-6 1.5L9 18z"/><path d="M14 14l4 4"/></svg></span>
+          <h3>Everything else stays the same</h3>
+          <p>Taps, clicks, scrolling and multi-finger gestures work as usual. A palm resting on the trackpad while you type is ignored.</p>
+        </article>
+        <article class="feature c-bright">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M7 12h6"/></svg></span>
+          <h3>A system-style indicator</h3>
+          <p>The level, the track timeline or the action name at the bottom of the screen. The pointer stays put during a gesture.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section app" id="app" aria-labelledby="app-title">
+    <div class="wrap app-grid">
+      <div>
+        <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>The app</span>
+        <h2 id="app-title">Settings that show your trackpad</h2>
+        <p class="section-lead">A live preview shows every zone, the corners and where your finger is right now. Everything is organized into four tabs.</p>
+        <div class="tabs" role="tablist" aria-label="Settings tabs">
+          <button type="button" role="tab" id="tab-zones" aria-selected="true" aria-controls="app-shot" data-tab="zones">Edges</button>
+          <button type="button" role="tab" id="tab-corners" aria-selected="false" aria-controls="app-shot" data-tab="corners">Corners</button>
+          <button type="button" role="tab" id="tab-feedback" aria-selected="false" aria-controls="app-shot" data-tab="feedback">Feedback</button>
+        </div>
+        <p class="tab-text" id="tabText">The action and width of each edge, slider speed and scrub step.</p>
+
+        <div class="huds">
+          <h3>On-screen indicator</h3>
+          <p>Appears at the bottom of the screen during a gesture and disappears as soon as you lift your finger.</p>
+          <div class="hud-shots">
+            <img class="w460" src="/assets/hud-seek.png" width="460" height="112" alt="Scrubbing indicator with the track title, timeline and +25 seconds" loading="lazy">
+            <img class="w340" src="/assets/hud-volume.png" width="340" height="74" alt="Volume indicator at 62 percent" loading="lazy">
+            <img class="w340" src="/assets/hud-media.png" width="340" height="74" alt="Next track indicator" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <figure class="window" id="app-shot" role="tabpanel" aria-labelledby="tab-zones">
+        <img id="appShot" src="/assets/app-zones.jpg" width="1040" height="1560" alt="EdgePad settings window, Edges tab">
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="buy" aria-labelledby="buy-title" style="padding-bottom: 0">
+    <div class="wrap">
+      <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>Pricing</span>
+      <h2 id="buy-title">Buy once, use it for good</h2>
+      <div class="price-card">
+        <div>
+          <div class="price"><b data-price>$2</b><span>one time, no subscription</span></div>
+          <ul class="price-list">
+            <li>Everything EdgePad can do: edges, corners, scrubbing, sound and haptic feedback</li>
+            <li>One key for three of your Macs</li>
+            <li>Free 1.x updates</li>
+            <li>14-day refund, no questions asked</li>
+          </ul>
+        </div>
+        <div class="price-cta">
+          <a class="btn btn-primary" id="buyButton" href="#buy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17.5" cy="20.5" r="1.2"/></svg>
+            <span id="buyLabel">Buy EdgePad</span>
+          </a>
+          <a class="btn btn-ghost" href="#download">Try it free for 7 days first</a>
+          <p class="price-note">Payments are handled by <a href="https://www.creem.io" rel="noopener">Creem</a>, which emails you a receipt and your license key right away. Enter the key in EdgePad on the License tab («Ліцензія»).<br><a href="/terms.html#en">Terms</a> · <a href="/refund.html#en">Refunds</a> · <a href="/privacy.html#en">Privacy</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section download" id="download" aria-labelledby="download-title">
+    <div class="wrap">
+      <div class="dl-card">
+        <img class="dl-icon" src="/assets/icon-256.png" width="168" height="168" alt="EdgePad icon">
+        <div>
+          <h2 id="download-title">Download EdgePad</h2>
+          <p class="dl-meta">Version <span data-version>1.2.1</span> · <span data-size>2.5 MB</span> · free for 7 days · macOS 13 or later · Apple Silicon and Intel</p>
+          <div class="cta-row">
+            <a class="btn btn-primary js-download" href="/EdgePad.dmg" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+              Download for free
+            </a>
+            <button class="btn btn-ghost" id="share" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+              Share this site
+            </button>
+          </div>
+          <div class="dl-link">
+            <span>File link</span>
+            <code id="fileLink">EdgePad.dmg</code>
+            <button type="button" id="copyFile">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="install" aria-labelledby="install-title" style="padding-top: 0">
+    <div class="wrap">
+      <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>Install</span>
+      <h2 id="install-title">Four steps, once</h2>
+      <ol class="install-list">
+        <li><b>Drag it to Applications</b><p>Open the downloaded EdgePad.dmg and drag EdgePad into the Applications folder.</p></li>
+        <li><b>Allow the first launch</b><p>macOS will warn that it can’t verify the developer. Open System Settings → Privacy &amp; Security and, under Security, allow EdgePad to open.</p></li>
+        <li><b>Turn on Accessibility</b><p>When EdgePad asks, turn it on in the Accessibility list. Without it, corners, scrubbing and the pointer lock don’t work.</p></li>
+        <li><b>Let it control your players</b><p>The first time you scrub Spotify or Music, macOS asks whether EdgePad may control them. Click Allow.</p></li>
+      </ol>
+      <p class="note">EdgePad isn’t notarized by Apple yet, so step 2 is needed on the first launch. The EdgePad icon then appears in the menu bar, and the settings window opens on its own.</p>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title" style="padding-top: 0">
+    <div class="wrap">
+      <span class="eyebrow"><span class="edges" aria-hidden="true"><i></i><i></i><i></i></span>FAQ</span>
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>How much does EdgePad cost?</summary>
+          <p>The first 7 days are free, with every feature. After that it’s <span data-price>$2</span> once, with no subscription. One key works on three of your Macs, and 1.x updates are free.</p>
+        </details>
+        <details>
+          <summary>Is the app in English?</summary>
+          <p>Not yet: the EdgePad interface is in Ukrainian for now. The gestures work the same either way, and wherever this page mentions a button in the app, its Ukrainian label is shown next to it.</p>
+        </details>
+        <details>
+          <summary>How do I activate my key?</summary>
+          <p>The key arrives by email right after payment. Open EdgePad’s settings, go to the License tab («Ліцензія»), paste the key and click Activate («Активувати»). To move the key to another Mac, click Release key («Звільнити ключ») on the same tab.</p>
+        </details>
+        <details>
+          <summary>What happens when the trial ends?</summary>
+          <p>The trackpad edges and corners stop controlling your Mac until you enter a key. Your settings stay put, and the trackpad keeps working as usual.</p>
+        </details>
+        <details>
+          <summary>Can I get a refund?</summary>
+          <p>Yes, within 14 days of purchase, no questions asked. Email us or reply to your receipt. Details are in the <a href="/refund.html#en">refund policy</a>.</p>
+        </details>
+        <details>
+          <summary>Why does macOS show a warning on first launch?</summary>
+          <p>EdgePad isn’t signed and notarized by Apple yet, so macOS won’t open it right away. You allow it once in System Settings → Privacy &amp; Security. After that it opens normally.</p>
+        </details>
+        <details>
+          <summary>How does scrubbing work in Spotify and Music?</summary>
+          <p>Directly: EdgePad moves the playback position itself, even when the app is in the background, and the indicator shows the title, the timeline and how many seconds you’ve moved. QuickTime Player and VLC work the same way. The step can be set from 2 to 30 seconds.</p>
+        </details>
+        <details>
+          <summary>What about video in the browser?</summary>
+          <p>Video in Safari, Chrome and other browsers, as well as in IINA and Apple TV, is scrubbed with the <kbd>←</kbd> <kbd>→</kbd> keys, so the video window needs to be active. If music is playing at the same time, the music is scrubbed instead.</p>
+        </details>
+        <details>
+          <summary>How do I switch tracks?</summary>
+          <p>Double-tap or double-click the top-left corner of the trackpad for the previous track and the top-right corner for the next. A single tap in a corner works as a normal click, just a moment later.</p>
+        </details>
+        <details>
+          <summary>Why does it need Accessibility permission?</summary>
+          <p>To press the scrubbing and media keys for you and to keep the pointer in place during a gesture. Volume and brightness work without it.</p>
+        </details>
+        <details>
+          <summary>Will it get in the way of scrolling and macOS gestures?</summary>
+          <p>No. A gesture starts only when one finger touches a colored strip and moves along the edge. Two-finger scrolling, system gestures, taps and clicks work as usual. If a strip triggers by accident, make it narrower, down to 3%.</p>
+        </details>
+        <details>
+          <summary>Can it change the brightness of an external display?</summary>
+          <p>No, EdgePad controls the brightness of the MacBook’s built-in display. Regular external displays adjust brightness with their own buttons.</p>
+        </details>
+        <details>
+          <summary>What are the system requirements?</summary>
+          <p>A Mac with a trackpad and macOS 13 Ventura or later. The app is universal, for Macs with Apple Silicon and Intel.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="/assets/icon-256.png" alt="" width="34" height="34">EdgePad</a>
+    <nav class="foot-links" aria-label="Documents">
+      <a href="/terms.html#en">Terms</a>
+      <a href="/refund.html#en">Refunds</a>
+      <a href="/privacy.html#en">Privacy</a>
+      <a href="https://www.instagram.com/_.alewex/" rel="noopener">Instagram</a>
+      <a href="mailto:support@edgepad.app">Email</a>
+    </nav>
+    <p>© <span id="year">2026</span> EdgePad. Mac, MacBook and macOS are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

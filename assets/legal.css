@@ -75,3 +75,12 @@ a { color: #C9B8FF; }
 }
 .docs a { color: var(--fg-dim); text-decoration: none; }
 .docs a:hover, .docs a[aria-current="page"] { color: var(--fg); }
+.to-en {
+  float: right;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: var(--fg-dim);
+  text-decoration: none;
+}
+.to-en:hover { color: var(--fg); }
+.back-en { margin-top: 28px; }
